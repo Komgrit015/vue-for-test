@@ -3,7 +3,9 @@ import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <v-main>
+      <v-container fluid>
+        <TheWelcome />
+      </v-container>
+   </v-main>
 </template>
