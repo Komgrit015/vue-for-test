@@ -4,8 +4,8 @@ import { ref } from 'vue'
 import { storeToRefs } from 'pinia';
 import { useUserStore } from './stores/user';
 
-const { theme } = storeToRefs(useUserStore())
-const { toggleTheme } = useUserStore()
+const { theme, user } = storeToRefs(useUserStore())
+const { toggleTheme, login, logout } = useUserStore()
 
 </script>
 
@@ -21,9 +21,10 @@ const { toggleTheme } = useUserStore()
         :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
         @click="toggleTheme"
       />
-      <v-btn>
+      <v-btn v-if="!user" icon="mdi-login" @click="login(1)" />
+      <v-btn v-if="user" @click="logout">
         <v-avatar>
-          <v-img src="https://www.melivecode.com/users/1.png"/>
+          <v-img :src="user.avatar" />
         </v-avatar>
       </v-btn>
     </v-app-bar>
